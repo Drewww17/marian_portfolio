@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marian Luminarias | Modern Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. SETTINGS & COLORS --- */
+        :root {
+            --bg-color: #F9F7F2;
+            --text-main: #0a0a0a; /* Almost Black */
+            --accent-red: #8F3636; /* PDF Maroon */
+            --accent-gray: #e0e0e0;
+            
+            --font-head: 'Oswald', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        /* --- 2. PRELOADER ANIMATION --- */
+        .preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--text-main);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: slideUpPreloader 1.2s var(--ease-out) 1s forwards;
+        }
+        
+        .preloader-text {
+            color: #fff;
+            font-family: var(--font-head);
+            font-size: 3rem;
+            text-transform: uppercase;
+            overflow: hidden;
+        }
+        
+        .preloader-text span {
+            display: block;
+            animation: slideUpText 0.8s var(--ease-out) forwards;
+            transform: translateY(100%);
+        }
+
+        @keyframes slideUpPreloader { to { transform: translateY(-100%); } }
+        @keyframes slideUpText { to { transform: translateY(0); } }
+
+        /* --- 3. TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 700;
+            color: var(--text-main);
+            margin-left: -5px; /* Visual optical alignment */
+        }
+
+        .outline-text {
+            -webkit-text-stroke: 1px var(--text-main);
+            color: transparent;
+            transition: all 0.5s;
+        }
+        
+        .hero:hover .outline-text {
+            color: var(--accent-red);
+            -webkit-text-stroke: 0px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 1rem;
+        }
+        
+        .section-num { font-family: var(--font-head); font-size: 1.2rem; color: var(--accent-red); font-weight: 600; }
+        .section-name { font-family: var(--font-head); font-size: 2rem; font-weight: 500; }
+
+        /* --- 4. LAYOUT --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section { padding: 8rem 0; }
+
+        /* --- 5. NAVIGATION --- */
+        nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+        .logo { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; letter-spacing: 1px; }
+
+        /* --- 6. ANIMATED MARQUEE --- */
+        .marquee {
+            background: var(--text-main);
+            color: #fff;
+            padding: 1rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transform: rotate(-2deg) scale(1.05); /* Modern Tilt */
+            margin: 4rem 0;
+        }
+        
+        .marquee-inner {
+            display: inline-block;
+            animation: scrollText 20s linear infinite;
+        }
+        
+        .marquee span {
+            font-family: var(--font-head);
+            font-size: 3rem;
+            margin: 0 2rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        @keyframes scrollText { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- 7. STAGGERED LIST (Experience) --- */
+        .list-row {
+            display: grid;
+            grid-template-columns: 0.5fr 2fr 1fr;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            transition: background 0.3s;
+            opacity: 0; /* Hidden initially */
+            transform: translateY(20px);
+        }
+        
+        .list-row.in-view {
+            animation: fadeInUp 0.6s var(--ease-out) forwards;
+        }
+        
+        .list-row:hover { background: #fff; padding-left: 1rem; border-color: var(--text-main); }
+        .list-row h3 { font-size: 2.5rem; font-weight: 400; }
+        .list-row span { font-size: 1.1rem; color: #666; display: flex; align-items: center; }
+
+        /* --- 8. PROJECT CARDS WITH CURTAIN REVEAL --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+        
+        .project-card { cursor: pointer; }
+        
+        .img-wrapper {
+            width: 100%;
+            height: 500px;
+            background: #ddd;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* The Curtain Overlay */
+        .img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--accent-red);
+            transform: scaleY(1);
+            transform-origin: top;
+            transition: transform 0.8s var(--ease-out);
+            z-index: 2;
+        }
+        
+        .img-wrapper.in-view::after { transform: scaleY(0); transition-delay: 0.2s; }
+        
+        .project-img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 1s;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-head); font-size: 3rem; color: rgba(0,0,0,0.2);
+            text-transform: uppercase;
+        }
+        
+        .project-card:hover .project-img { transform: scale(1.1); }
+        
+        .p-1 { background: #ffe4e4; }
+        .p-2 { background: #e4ffe9; }
+        .p-3 { background: #fff4e4; }
+        .p-4 { background: #333; color: #555; }
+
+        /* --- 9. FOOTER --- */
+        footer {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--text-main);
+            color: #fff;
+            text-align: center;
+        }
+        
+        .contact-big {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-family: var(--font-head);
+            line-height: 1;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+        .contact-big:hover { color: var(--accent-red); -webkit-text-stroke: 1px #fff; }
+
+        /* --- UTILS --- */
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        
+        .split-text span { display: inline-block; overflow: hidden; vertical-align: bottom; }
+        .split-text span i { display: block; transform: translateY(100%); transition: transform 0.8s var(--ease-out); }
+        .split-text.in-view span i { transform: translateY(0); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .projects-grid, .list-row { grid-template-columns: 1fr; gap: 1rem; }
+            .hero-title { font-size: 5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader">
+        <div class="preloader-text">
+            <span>Portfolio</span>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <nav>
+            <div class="logo">ML.</div>
+            <a href="mailto:marianluminarias@gmail.com" style="text-transform: uppercase; font-weight: 700; font-size: 0.9rem;">Contact</a>
+        </nav>
+
+        <section class="hero">
+            <h1 class="hero-title split-text" id="hero-text">
+                <span><i>CREATIVE</i></span><br>
+                <span><i>PORTFOLIO</i></span><br>
+                <span class="outline-text"><i>2025</i></span>
+            </h1>
+        </section>
+
+    </div>
+
+    <div class="marquee">
+        <div class="marquee-inner">
+            <span>Graphic Design • Photography • Social Media • Branding • Creative Direction •</span>
+            <span>Graphic Design • Photography • Social Media • Branding • Creative Direction •</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <section>
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <span class="section-name">Introduction</span>
+            </div>
+            <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); max-width: 900px; margin-bottom: 2rem; font-weight: 400; line-height: 1.3;">
+                [cite_start]A customer-oriented professional with excellent communication skills. Experienced in leveraging online platforms to deliver high-quality support. [cite: 16-17]
+            </h2>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <span class="section-name">Experience & Education</span>
+            </div>
+
+            <div class="list-row scroll-item">
+                <span>2025</span>
+                <h3>Creatives Com Member</h3>
+                <span>University of Mindanao</span>
+            </div>
+            
+            <div class="list-row scroll-item" style="transition-delay: 0.1s">
+                <span>2020</span>
+                <h3>Social Media Manager</h3>
+                <span>Imirata Prints</span>
+            </div>
+
+            <div class="list-row scroll-item" style="transition-delay: 0.2s">
+                <span>2025</span>
+                <h3>Bachelor's Degree</h3>
+                <span>University of Mindanao</span>
+            </div>
+            
+            <div class="list-row scroll-item" style="transition-delay: 0.3s">
+                <span>2022</span>
+                <h3>Senior High School</h3>
+                <span>Agusan National HS</span>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <span class="section-name">Selected Works</span>
+            </div>
+
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="img-wrapper scroll-img p-1">
+                        <div class="project-img">Imirata</div>
+                    </div>
+                    <h3>Imirata Prints</h3>
+                    <p>Branding & Social Media</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="img-wrapper scroll-img p-2">
+                        <div class="project-img">AmpedRide</div>
+                    </div>
+                    <h3>AmpedRide</h3>
+                    <p>Logo Design • Estd 2024</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="img-wrapper scroll-img p-3">
+                        <div class="project-img" style="color:#000;">Matigsalug</div>
+                    </div>
+                    <h3>Cultural Layout</h3>
+                    <p>Graphic Design • Brochure</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="img-wrapper scroll-img p-4">
+                        <div class="project-img" style="color:#fff;">Photo</div>
+                    </div>
+                    <h3>Photography</h3>
+                    <p>Portrait & Lifestyle</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <span style="text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 2px;">Next Steps</span>
+        <a href="mailto:marianluminarias@gmail.com" class="contact-big">Let's Work<br>Together</a>
+        <p style="opacity: 0.5; margin-top: 2rem;">© 2025 Marian Luminarias</p>
+    </footer>
+
+    <script>
+        // 1. Initial Hero Reveal
+        setTimeout(() => {
+            document.getElementById('hero-text').classList.add('in-view');
+        }, 2200); // Waits for preloader
+
+        // 2. Scroll Observer
+        const observerOptions = { threshold: 0.15 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+
+        // Observe List Rows
+        document.querySelectorAll('.scroll-item').forEach(el => observer.observe(el));
+        
+        // Observe Images (for curtain effect)
+        document.querySelectorAll('.img-wrapper').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
