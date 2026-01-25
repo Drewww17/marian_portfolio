@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marian Luminarias | Nutritionist & Creative</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
     <style>
         /* --- VARIABLES: CRIMSON & RED PALETTE --- */
         :root {
             /* Background: Warm Antique Paper */
             --bg-color: #F7F5F0; 
-            /* Text: Dark Charcoal */
-            --text-color: #221f1f; 
+            /* Text: Soft Black for less harsh contrast */
+            --text-color: #2c2525; 
             /* Primary: Rich Crimson Red */
             --accent-primary: #990012; 
             /* Secondary: Muted Terra Red */
@@ -18,19 +23,24 @@
             /* Glass Effect */
             --glass-bg: rgba(255, 255, 255, 0.6);
             --glass-border: rgba(153, 0, 18, 0.15);
+            
+            /* --- FONTS --- */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
         }
 
         /* --- RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: var(--font-body);
             background-color: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
             opacity: 0;
             transition: opacity 0.5s ease;
-            line-height: 1.6;
+            line-height: 1.7; /* Improved readability */
+            font-weight: 300; /* Lighter weight for elegance */
         }
 
         body.loaded { opacity: 1; }
@@ -48,11 +58,12 @@
         }
 
         .splash-text {
-            font-family: 'Georgia', serif;
-            font-size: 3rem;
+            font-family: var(--font-heading);
+            font-size: 3.5rem; /* Larger for impact */
             overflow: hidden;
             text-align: center;
             color: var(--accent-primary);
+            letter-spacing: -1px; /* Tighter for editorial look */
         }
 
         .splash-word {
@@ -106,10 +117,25 @@
 
         /* --- LAYOUT --- */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        h1, h2, h3 { font-family: 'Georgia', serif; font-weight: normal; }
+        
+        h1, h2, h3, h4 { 
+            font-family: var(--font-heading); 
+            font-weight: 400; 
+        }
         
         nav { display: flex; justify-content: space-between; align-items: center; padding: 2.5rem 0; }
-        .logo { font-weight: bold; letter-spacing: 1px; z-index: 10; cursor: pointer; color: var(--accent-primary); }
+        
+        .logo { 
+            font-family: var(--font-body);
+            font-weight: 700; 
+            letter-spacing: 2px; 
+            z-index: 10; 
+            cursor: pointer; 
+            color: var(--accent-primary); 
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
         a { text-decoration: none; color: inherit; }
 
         /* --- HERO --- */
@@ -122,10 +148,11 @@
         }
 
         .hero h1 {
-            font-size: 5rem;
+            font-size: 5.5rem; /* Larger */
             line-height: 1;
             margin-bottom: 2rem;
             overflow: hidden;
+            letter-spacing: -2px; /* Stylish tight spacing */
         }
         
         .hero-line {
@@ -136,23 +163,25 @@
         
         .hero.animate .hero-line { transform: translateY(0); }
 
-        .italic-text { font-style: italic; color: var(--accent-secondary); }
-        .italic-text-2 { font-style: italic; color: var(--accent-primary); }
+        .italic-text { font-family: var(--font-heading); font-style: italic; color: var(--accent-secondary); font-weight: 400; }
+        .italic-text-2 { font-family: var(--font-heading); font-style: italic; color: var(--accent-primary); font-weight: 400; }
 
         .tagline {
-            font-size: 1.1rem;
+            font-family: var(--font-body);
+            font-size: 1.15rem;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.8s ease 0.8s;
             color: #4a4a4a;
             max-width: 650px;
+            font-weight: 300;
         }
         .hero.animate .tagline { opacity: 1; transform: translateY(0); }
 
         /* --- BUTTONS --- */
         .btn {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 1rem 2.2rem;
             background: transparent;
             border: 1px solid var(--accent-primary);
             color: var(--accent-primary);
@@ -161,15 +190,19 @@
             margin-top: 1rem;
             transition: all 0.3s;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
         .btn:hover { background: var(--accent-primary); color: white; }
 
         /* --- BIO SECTION (Merged Nutrition & Creative) --- */
         .bio-section {
-            padding: 4rem 0;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 5rem 0;
+            border-top: 1px solid rgba(153, 0, 18, 0.1);
+            border-bottom: 1px solid rgba(153, 0, 18, 0.1);
             margin-bottom: 4rem;
         }
 
@@ -181,23 +214,44 @@
         }
 
         .bio-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--accent-primary);
-            line-height: 1.2;
+            line-height: 1.1;
+            letter-spacing: -1px;
         }
 
         .bio-text p {
             margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            color: #333;
+            font-size: 1.1rem;
+            color: #444;
+            font-weight: 300;
         }
 
         .highlight-box {
-            background: rgba(153, 0, 18, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(153, 0, 18, 0.05) 0%, rgba(255,255,255,0) 100%);
+            padding: 2.5rem;
+            border-radius: 12px;
             margin-top: 2rem;
-            border-left: 4px solid var(--accent-primary);
+            border-left: 3px solid var(--accent-primary);
+            
+            /* Typography Update for Goal Box */
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--accent-primary);
+            line-height: 1.6;
+        }
+
+        .highlight-box strong {
+            font-family: var(--font-body);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-style: normal;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
         }
 
         /* --- TIMELINE SECTION --- */
@@ -217,29 +271,33 @@
         }
 
         .timeline-item {
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             position: relative;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--accent-secondary);
+            padding-left: 2rem;
+            border-left: 1px solid var(--accent-secondary);
         }
 
         .timeline-year {
-            font-weight: bold;
+            font-family: var(--font-body);
+            font-weight: 500;
             color: var(--accent-secondary);
             margin-bottom: 0.2rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .timeline-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
         }
 
         .timeline-desc {
-            font-size: 0.95rem;
-            color: #555;
-            line-height: 1.5;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 300;
         }
 
         /* --- PROJECTS GRID --- */
@@ -249,33 +307,43 @@
         .glass-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            padding: 2.5rem;
-            border-radius: 20px;
+            padding: 3rem;
+            border-radius: 16px;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.8);
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 15px 30px rgba(153, 0, 18, 0.1);
         }
 
         .glass-card h4 {
-            font-size: 1.5rem; 
-            margin-bottom: 0.5rem; 
+            font-size: 1.8rem; 
+            margin-bottom: 0.8rem; 
             color: var(--accent-primary); 
-            font-family: 'Georgia', serif;
+            line-height: 1.1;
         }
 
         .glass-card .category {
-            font-size: 0.8rem;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: var(--accent-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .glass-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            font-weight: 300;
         }
 
         .reveal-up {
@@ -287,8 +355,8 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
-            .bio-grid, .timeline-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .splash-text { font-size: 2rem; }
+            .bio-grid, .timeline-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .splash-text { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -311,7 +379,7 @@
     <div class="container">
         <nav class="reveal-up">
             <div class="logo">MRL 2025</div>
-            <a href="mailto:marianluminarias@gmail.com" class="btn" style="margin-top: 0; padding: 0.5rem 1.5rem;">Let's Talk</a>
+            <a href="mailto:marianluminarias@gmail.com" class="btn" style="margin-top: 0; padding: 0.6rem 1.8rem;">Let's Talk</a>
         </nav>
 
         <header class="hero" id="hero">
@@ -325,9 +393,9 @@
                 <p>
                     I am a dedicated student nutritionist–dietitian with a strong interest in promoting health through evidence-based nutrition and lifestyle interventions.
                 </p>
-                <div style="margin-top: 2rem;">
+                <div style="margin-top: 2.5rem;">
                     <a href="#about" class="btn">Read Profile</a>
-                    <a href="#projects" class="btn" style="border:none;">View Creative Work ↓</a>
+                    <a href="#projects" class="btn" style="border:none; padding-left: 1rem;">View Creative Work ↓</a>
                 </div>
             </div>
         </header>
@@ -345,7 +413,8 @@
                         I possess hands-on experience through academic projects, case studies, and supervised learning activities involving nutritional assessment, meal planning, and basic dietary counseling. I demonstrate strong research, communication, and critical-thinking skills, with a commitment to ethical practice and evidence-based nutrition care.
                     </p>
                     <div class="highlight-box">
-                        <strong>My Goal:</strong> I aspire to contribute to health promotion, disease prevention, and quality nutrition services in clinical and community settings.
+                        <strong>My Goal</strong> 
+                        "I aspire to contribute to health promotion, disease prevention, and quality nutrition services in clinical and community settings."
                     </div>
                 </div>
             </div>
@@ -396,8 +465,8 @@
         </section>
 
         <section id="projects">
-            <h2 class="reveal-up" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-primary);">Selected Works</h2>
-            <p class="reveal-up" style="margin-bottom: 3rem; color: #666;">A showcase of clinical preparation and visual design.</p>
+            <h2 class="reveal-up" style="font-size: 3.5rem; margin-bottom: 1rem; color: var(--accent-primary);">Selected Works</h2>
+            <p class="reveal-up" style="margin-bottom: 3.5rem; color: #666; font-size: 1.1rem;">A showcase of clinical preparation and visual design.</p>
             
             <div class="card-grid">
                 
@@ -405,7 +474,7 @@
                     <div>
                         <div class="category">Clinical Nutrition</div>
                         <h4>Diet Therapy & Assessment</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.6; color: #444;">
+                        <p>
                             Proficient in nutritional assessment and meal planning. Translating complex metabolic science into practical diet therapies for diverse patient needs.
                         </p>
                     </div>
@@ -415,7 +484,7 @@
                     <div>
                         <div class="category">Branding & Socials</div>
                         <h4>Imirata Prints</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.6; color: #444;">
+                        <p>
                             Managed social media strategy for an Instax printing service, highlighting "nostalgic, vintage charm" to engage customers.
                         </p>
                     </div>
@@ -425,7 +494,7 @@
                     <div>
                         <div class="category">Identity Design</div>
                         <h4>AmpedRide</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.6; color: #444;">
+                        <p>
                             Logo creation for an eco-friendly ride service. Merging organic elements with modern transport iconography.
                         </p>
                     </div>
@@ -435,7 +504,7 @@
                     <div>
                         <div class="category">Photography</div>
                         <h4>Visual Storytelling</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.6; color: #444;">
+                        <p>
                             Capturing authentic moments. I believe great photos tell stories, spark memories, and connect people.
                         </p>
                     </div>
@@ -444,8 +513,8 @@
         </section>
 
         <section style="text-align: center; height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <h2 class="reveal-up" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-primary);">Let's create health.</h2>
-            <a href="mailto:marianluminarias@gmail.com" class="btn reveal-up" style="font-size: 1.2rem;">marianluminarias@gmail.com</a>
+            <h2 class="reveal-up" style="font-size: 3.5rem; margin-bottom: 1.5rem; color: var(--accent-primary);">Let's create health.</h2>
+            <a href="mailto:marianluminarias@gmail.com" class="btn reveal-up" style="font-size: 1.1rem; padding: 1rem 3rem;">marianluminarias@gmail.com</a>
         </section>
     </div>
 
