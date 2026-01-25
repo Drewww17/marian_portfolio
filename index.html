@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marian Luminarias | Creative Portfolio</title>
+    <title>Marian Luminarias | Nutritionist & Creative</title>
     <style>
         /* --- VARIABLES: CRIMSON & RED PALETTE --- */
         :root {
@@ -16,7 +16,7 @@
             /* Secondary: Muted Terra Red */
             --accent-secondary: #C24545; 
             /* Glass Effect */
-            --glass-bg: rgba(255, 255, 255, 0.5);
+            --glass-bg: rgba(255, 255, 255, 0.6);
             --glass-border: rgba(153, 0, 18, 0.15);
         }
 
@@ -30,6 +30,7 @@
             overflow-x: hidden;
             opacity: 0;
             transition: opacity 0.5s ease;
+            line-height: 1.6;
         }
 
         body.loaded { opacity: 1; }
@@ -121,7 +122,7 @@
         }
 
         .hero h1 {
-            font-size: 5.5rem;
+            font-size: 5rem;
             line-height: 1;
             margin-bottom: 2rem;
             overflow: hidden;
@@ -139,12 +140,12 @@
         .italic-text-2 { font-style: italic; color: var(--accent-primary); }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.8s ease 0.8s;
             color: #4a4a4a;
-            max-width: 600px;
+            max-width: 650px;
         }
         .hero.animate .tagline { opacity: 1; transform: translateY(0); }
 
@@ -164,7 +165,42 @@
         }
         .btn:hover { background: var(--accent-primary); color: white; }
 
-        /* --- TIMELINE SECTION (Education & Experience) --- */
+        /* --- BIO SECTION (Merged Nutrition & Creative) --- */
+        .bio-section {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 4rem;
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .bio-title {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            line-height: 1.2;
+        }
+
+        .bio-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: #333;
+        }
+
+        .highlight-box {
+            background: rgba(153, 0, 18, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        /* --- TIMELINE SECTION --- */
         .timeline-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -224,7 +260,7 @@
 
         .glass-card:hover {
             transform: translateY(-5px);
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.8);
         }
 
         .glass-card h4 {
@@ -251,7 +287,7 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
-            .timeline-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .bio-grid, .timeline-grid { grid-template-columns: 1fr; gap: 2rem; }
             .splash-text { font-size: 2rem; }
         }
     </style>
@@ -280,22 +316,40 @@
 
         <header class="hero" id="hero">
             <h1>
-                <span class="hero-line">Visual</span>
-                <span class="hero-line italic-text">Storyteller.</span>
+                <span class="hero-line">Student</span>
+                <span class="hero-line italic-text">Nutritionist.</span>
                 <span class="hero-line">Creative</span>
                 <span class="hero-line italic-text-2">Strategist.</span>
             </h1>
             <div class="tagline">
                 <p>
-                    A customer-oriented professional blending <strong>Graphic Design, Photography, and Social Media Strategy</strong>.
-                    Creating designs that are not only visually appealing but strategically effective.
+                    I am a dedicated student nutritionist–dietitian with a strong interest in promoting health through evidence-based nutrition and lifestyle interventions.
                 </p>
                 <div style="margin-top: 2rem;">
-                    <a href="#projects" class="btn">View Portfolio</a>
-                    <a href="#resume" class="btn" style="border:none;">Read Resume ↓</a>
+                    <a href="#about" class="btn">Read Profile</a>
+                    <a href="#projects" class="btn" style="border:none;">View Creative Work ↓</a>
                 </div>
             </div>
         </header>
+
+        <section id="about" class="bio-section reveal-up">
+            <div class="bio-grid">
+                <div class="bio-title">
+                    Professional<br>Summary
+                </div>
+                <div class="bio-text">
+                    <p>
+                        Dedicated and goal-oriented Graduating Student Nutritionist-Dietitian with comprehensive academic training in nutritional sciences, diet therapy, community nutrition, and food service management.
+                    </p>
+                    <p>
+                        I possess hands-on experience through academic projects, case studies, and supervised learning activities involving nutritional assessment, meal planning, and basic dietary counseling. I demonstrate strong research, communication, and critical-thinking skills, with a commitment to ethical practice and evidence-based nutrition care.
+                    </p>
+                    <div class="highlight-box">
+                        <strong>My Goal:</strong> I aspire to contribute to health promotion, disease prevention, and quality nutrition services in clinical and community settings.
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="resume" class="reveal-up">
             <div class="timeline-grid">
@@ -304,21 +358,15 @@
                     <h3>Education</h3>
                     
                     <div class="timeline-item">
-                        <div class="timeline-year">2025 (Current)</div>
+                        <div class="timeline-year">2025 (Graduating)</div>
                         <div class="timeline-title">University of Mindanao</div>
-                        <div class="timeline-desc">Davao City. Member of the Creatives Committee.</div>
+                        <div class="timeline-desc"><strong>BS Nutrition & Dietetics.</strong> Building a solid foundation in nutritional sciences, diet therapy, and public health nutrition.</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-year">2022</div>
                         <div class="timeline-title">Agusan National High School</div>
                         <div class="timeline-desc">Senior High School.</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020</div>
-                        <div class="timeline-title">Agusan National High School</div>
-                        <div class="timeline-desc">Junior High School.</div>
                     </div>
                 </div>
 
@@ -334,13 +382,13 @@
                     <div class="timeline-item">
                         <div class="timeline-year">2020 - Present</div>
                         <div class="timeline-title">Social Media Manager (Imirata Prints)</div>
-                        <div class="timeline-desc">Assisting graphic designers on project campaigns. Shaping social media presence to target new customers.</div>
+                        <div class="timeline-desc">Shaping social media presence to target new customers with nostalgic, vintage charm.</div>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-year">2020</div>
-                        <div class="timeline-title">Social Media Manager (NGO)</div>
-                        <div class="timeline-desc">Designing digital campaigns and social media collateral for non-profit clients.</div>
+                        <div class="timeline-year">Clinical Training</div>
+                        <div class="timeline-title">Academic Projects & Case Studies</div>
+                        <div class="timeline-desc">Nutritional assessment, meal planning, and basic dietary counseling focused on translating scientific knowledge into practical recommendations.</div>
                     </div>
                 </div>
 
@@ -349,35 +397,36 @@
 
         <section id="projects">
             <h2 class="reveal-up" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-primary);">Selected Works</h2>
-            <p class="reveal-up" style="margin-bottom: 3rem; color: #666;">A showcase of branding, layout, and visual identity.</p>
+            <p class="reveal-up" style="margin-bottom: 3rem; color: #666;">A showcase of clinical preparation and visual design.</p>
             
             <div class="card-grid">
+                
                 <div class="glass-card reveal-up js-tilt">
                     <div>
-                        <div class="category">Social Media & Branding</div>
-                        <h4>Imirata Prints</h4>
+                        <div class="category">Clinical Nutrition</div>
+                        <h4>Diet Therapy & Assessment</h4>
                         <p style="font-size: 0.95rem; line-height: 1.6; color: #444;">
-                            A printing service specializing in authentic Instax film. I managed the social media strategy to highlight their "nostalgic, vintage charm" tailored for gifts and journals.
+                            Proficient in nutritional assessment and meal planning. Translating complex metabolic science into practical diet therapies for diverse patient needs.
                         </p>
                     </div>
                 </div>
 
                 <div class="glass-card reveal-up js-tilt" style="transition-delay: 0.1s;">
                     <div>
-                        <div class="category">Identity Design</div>
-                        <h4>AmpedRide</h4>
+                        <div class="category">Branding & Socials</div>
+                        <h4>Imirata Prints</h4>
                         <p style="font-size: 0.95rem; line-height: 1.6; color: #444;">
-                            Logo creation for an eco-friendly ride service (Estd. 2024). The design incorporates organic elements (leaves) with modern transport iconography.
+                            Managed social media strategy for an Instax printing service, highlighting "nostalgic, vintage charm" to engage customers.
                         </p>
                     </div>
                 </div>
 
                 <div class="glass-card reveal-up js-tilt" style="transition-delay: 0.2s;">
                     <div>
-                        <div class="category">Editorial Layout</div>
-                        <h4>Matigsalug Heritage</h4>
+                        <div class="category">Identity Design</div>
+                        <h4>AmpedRide</h4>
                         <p style="font-size: 0.95rem; line-height: 1.6; color: #444;">
-                            A cultural brochure layout detailing the history, location, and beadwork arts of the "People of the River" in Mindanao.
+                            Logo creation for an eco-friendly ride service. Merging organic elements with modern transport iconography.
                         </p>
                     </div>
                 </div>
@@ -385,9 +434,9 @@
                 <div class="glass-card reveal-up js-tilt" style="transition-delay: 0.3s;">
                     <div>
                         <div class="category">Photography</div>
-                        <h4>Authentic Moments</h4>
+                        <h4>Visual Storytelling</h4>
                         <p style="font-size: 0.95rem; line-height: 1.6; color: #444;">
-                            From portraits to product shots. Capturing stories that spark memories and connect people through a creative lens.
+                            Capturing authentic moments. I believe great photos tell stories, spark memories, and connect people.
                         </p>
                     </div>
                 </div>
@@ -395,7 +444,7 @@
         </section>
 
         <section style="text-align: center; height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <h2 class="reveal-up" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-primary);">Ready to collaborate?</h2>
+            <h2 class="reveal-up" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-primary);">Let's create health.</h2>
             <a href="mailto:marianluminarias@gmail.com" class="btn reveal-up" style="font-size: 1.2rem;">marianluminarias@gmail.com</a>
         </section>
     </div>
